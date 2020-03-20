@@ -16,10 +16,15 @@ let automaticUpgrades = {
     price: 600,
     quantity: 0,
     multiplier: 20
+  },
+  aliens: {
+    price: 6000,
+    quantity: 0,
+    multiplier: 200
   }
 };
 
-let cheese = 1000;
+let cheese = 10000;
 
 // NOTE This function is invoked when the user clicks on the moon which increases cheese count and updates the DOM
 function mine() {
@@ -32,10 +37,15 @@ function mine() {
 //NOTE This function is responsible for updating the DOM with the current cheese count 
 function update() {
   document.getElementById('cheese-Count').innerText = cheese.toString();
+  // Updates Pickaxe Items
   document.getElementById('pickaxe-Count').innerText = clickUpgrades.pickaxes.quantity.toString();
   document.getElementById('pickaxe-Price').innerText = clickUpgrades.pickaxes.price.toString();
+  // Updates Laser Items 
   document.getElementById('laser-Count').innerText = clickUpgrades.laser.quantity.toString();
   document.getElementById('laser-Price').innerText = clickUpgrades.laser.price.toString();
+  // Updates Rover Items
+  document.getElementById('rover-Count').innerText = automaticUpgrades.rovers.quantity.toString();
+  document.getElementById('rover-Price').innerText = automaticUpgrades.rovers.price.toString();
 }
 
 
@@ -52,6 +62,7 @@ function BuyPickaxe() {
   }
 }
 
+
 function BuyLaser() {
   console.log("purhcased")
   let price = clickUpgrades.laser.price;
@@ -65,9 +76,31 @@ function BuyLaser() {
   }
 }
 
-function collectAutoUpgrades() {
-  
+function buyRover(){
+  let price = automaticUpgrades.rovers.price;
+  if (cheese >= price) {
+    cheese -= price;
+    automaticUpgrades.rovers.quantity++;
+    automaticUpgrades.rovers.price += Math.floor(price * 0.3);
+  } else {
+    alert('You need more cheese');
+  }
 }
 
+// NOTE This will iterate over the automaticUpgrades, total the quantity of each automaticUpgrade times their multiplier, and add that value to the cheese resource.
+function startInterval() {
+  setInterval(collectAutoUpgrades, 1000);
+}
 
+// NOTE This function is responsible for calculating/returning the total of cheese collected according to how many autoUpgrades the user has
+function collectAutoUpgrades() {
+  let passiveCheeseIncome = 0;
+  for (let key in automaticUpgrades) {
+    passiveCheeseIncome += automaticUpgrades[key].quantity * automaticUpgrades[key].multiplier;
+  }
+  cheese += passiveCheeseIncome;
+  document.getElementById('CPS').innerText = passiveCheeseIncome.toString();
+  update();
+}
 
+startInterval();
