@@ -9,12 +9,61 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Style CSS -->
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
 
-    
+  <body class='bg-img'>
+  
+    <header class="container-fluid">
+      <div class="row bg-clear">
+        <div class="col-12 text-light text-center p-3">
+          <h2>Moon Miner</h2>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row justify-content-around">
+
+        <div class="col-4 py-4 text-center">
+          
+        </div>
+
+        <div class="col-4 py-4 text-center">
+            <img src="img/Moon.gif" onclick="mine()">
+        </div>
+
+        <div class="col-4 py-4 text-center"></div>
+
+      </div>
+
+      <div class="row justify-content-around">
+        <div class="col-4 p-5 text-center text-danger">
+          <h3>Inventory</h3>
+          <h4>Cheese Mined : <span id="cheese-Count">0</span></h4>
+          <h4>Pickaxe Count : <span id="pickaxe-Count">0</span></h4>
+          <h4>Laser Count : <span id="laser-Count">0</span></h4>
+          <h4>Cheese Mined : <span id="cheese-Count">0</span></h4>
+        </div>
+        <div class="col-4 p-5 text-success text-center">
+          <h3>Upgrades</h3>
+          <button class="btn btn-block btn-success bg-clear" onclick="BuyPickaxe()">
+            Pickaxe  -  Price <span id="pickaxe-Price">100</span>
+          </button>
+          <button class="btn btn-block btn-success bg-clear" onclick="BuyLaser()">
+            Laser  -  Price <span id="laser-Price">1000</span>
+          </button>
+        </div>
+        <div class="col-4 p-5 text-center"></div>
+      </div>
+
+    </main>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
