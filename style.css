@@ -4,3 +4,7 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.bg-opacity-card {
+  background-color: rgba(29, 29, 29, 0.4)
+}
